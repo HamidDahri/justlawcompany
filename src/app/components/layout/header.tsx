@@ -35,10 +35,30 @@ const Header: React.FC<HeaderProps> = ({ menuItems }) => {
     closeMenu();
   };
 
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  React.useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > window.innerHeight - 200) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <div className="sm:px-4 xl:px-8 fixed w-full mx-auto  z-50">
       <div className="shadow container  sm:mt-4 mx-auto backdrop-blur-md  md:rounded-xl  overflow-hidden">
-        <nav className="flex relative     items-center px-4 sm:ps-6  bg-white  py-3 pe-4  mx-auto justify-between lg:flex-row flex-row-reverse w-full">
+        {/*  className="flex relative     items-center px-4 sm:ps-6  bg-white  py-3 pe-4  mx-auto justify-between lg:flex-row flex-row-reverse w-full"> */}
+        <nav
+          className={`flex relative items-center px-4 sm:ps-6 py-3 pe-4 mx-auto justify-between lg:flex-row flex-row-reverse w-full transition-colors duration-500 ${
+            isScrolled ? "bg-primary-light text-white" : "bg-white"
+          }`}
+        >
           <Link href={"/"} className="relative order-1 lg:order-0 min-w-50">
             <Image alt="" src={Images.layout.logo} className="w-20 md:w-28" />
           </Link>
