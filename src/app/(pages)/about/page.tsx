@@ -1,14 +1,16 @@
+"use client";
 import Image from "next/image";
+import React from "react";
 
-export default function Home() {
+const Page = () => {
   return (
-    <div className="bg-[url('/images/jlc.jpg')] bg-center bg-cover bg-no-repeat w-full h-dvh">
+    <div className="bg-[url('/images/jlc.jpg')] bg-center bg-cover bg-no-repeat w-full h-dvh ">
       <div className="bg-black/50 w-full h-full flex flex-col justify-center items-center text-center px-4">
         <Image alt="logo" src={"/images/logo.png"} width={280} height={280} />
 
         {/* <h1 className="text-3xl md:text-6xl font-medium text-white mt-4">
-          Just Law Company
-        </h1> */}
+            Just Law Company
+          </h1> */}
 
         {/* Under Construction */}
         <div className="mt-6 flex items-center gap-2">
@@ -26,4 +28,6 @@ export default function Home() {
       </div>
     </div>
   );
-}
+};
+
+export default Page;

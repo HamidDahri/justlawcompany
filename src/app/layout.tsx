@@ -1,14 +1,11 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Work_Sans } from "next/font/google";
 import "./globals.css";
+import Header from "./components/layout/header";
+import Footer from "./components/layout/Footer";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const workSans = Work_Sans({
+  variable: "--font-work-sans",
   subsets: ["latin"],
 });
 
@@ -16,6 +13,31 @@ export const metadata: Metadata = {
   title: "Just Law Company",
   description: "Trust is just a beginning",
 };
+
+const menuItems = [
+  {
+    label: "Home",
+    href: "/home",
+  },
+  { label: "Lawyers", href: "/lawyers" },
+  {
+    label: "Articles",
+    href: "/articles",
+  },
+  {
+    label: "Careers",
+    href: "/careers",
+  },
+
+  {
+    label: "About",
+    href: "/about",
+  },
+  {
+    label: "Contact",
+    href: "/contact",
+  },
+];
 
 export default function RootLayout({
   children,
@@ -38,10 +60,10 @@ export default function RootLayout({
         href="images/favicon/apple-touch-icon.png"
       />
       <link rel="manifest" href="images/favicon/site.webmanifest" />
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className={`${workSans.variable} antialiased`}>
+        <Header menuItems={menuItems} />
         {children}
+        <Footer />
       </body>
     </html>
   );

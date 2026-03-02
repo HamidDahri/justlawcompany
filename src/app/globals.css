@@ -1,0 +1,93 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --color-primary: #78350F;
+  --color-primary-light: #EBE1DB;
+  --color-primary-dark: #5A280B;
+  --color-primary-light: #F2EBE7;
+
+    @keyframes slideUpWord {
+    0% {
+      opacity: 0;
+      transform: translateY(120%);
+    }
+    20% {
+      opacity: 1;
+      transform: translateY(0%);
+    }
+    80% {
+      opacity: 1;
+      transform: translateY(0%);
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(-120%);
+    }
+  }
+  --animate-slide-up-word: slideUpWord 2s ease-in-out;
+}
+
+/* @media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+} */
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-work-sans);
+}
+
+.crt-root {
+  display: inline-block;
+  line-height: 1.2;
+  vertical-align: top;
+  outline: none;
+}
+
+.crt-wrap {
+  display: inline-flex;
+  align-items: baseline;
+}
+
+/* Character viewport */
+.crt-cell {
+  display: inline-block;
+  overflow: hidden;
+  height: 1em; /* show exactly one glyph */
+}
+
+/* Two identical glyphs stacked */
+
+.crt-glyph {
+  display: block;
+  height: 1em;
+  line-height: 1em;
+}
+
+/* ✅ Move by ONE glyph (half of the 2-glyph stack) */
+.crt-root:hover .crt-stack {
+  transform: translateY(-50%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .crt-stack {
+    transition: none !important;
+    transform: none !important;
+  }
+}
+
+.stroke-text {
+  -webkit-text-stroke: 2px #8B4513;
+}
